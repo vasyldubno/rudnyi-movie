@@ -1,0 +1,24 @@
+type Query {
+  movies(page: Int): Movies
+  moviesByIds(ids: [Int]): [Movie]
+}
+
+type Movies {
+  page: Int!
+  totalResults: Int!
+  totalPages: Int!
+  results: [Movie!]!
+}
+
+type Movie {
+  id: ID!
+  title: String!
+  releaseDate(format: String): String!
+  posterPath: String
+  genres: [Genre]
+}
+
+type Genre {
+  id: Int!
+  name: String
+}

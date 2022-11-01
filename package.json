@@ -1,0 +1,13 @@
+{
+  "name": "movie",
+  "version": "1.0.0",
+  "main": "./server/src/index.js",
+  "scripts": {
+    "start": "node server/src/index.js",
+    "build": "cd client  && npm run build",
+    "install": "cd client && npm install --force && cd .. && cd server && npm install --force"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
