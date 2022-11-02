@@ -10,7 +10,7 @@ import { Recommend } from './pages/Recommend';
 import { Settings } from './pages/Settings';
 
 const client = new ApolloClient({
-  uri: `https://rudnyi-movie.vercel.app/graphql`,
+  uri: `${process.env.BASE_URL}/graphql`,
   cache: new InMemoryCache(),
   connectToDevTools: true
 })
