@@ -10,7 +10,7 @@ import { Recommend } from './pages/Recommend';
 import { Settings } from './pages/Settings';
 
 const client = new ApolloClient({
-  uri: `${process.env.BASE_URL}/graphql`,
+  uri: `http://localhost:4000/graphql`,
   cache: new InMemoryCache(),
   connectToDevTools: true
 })

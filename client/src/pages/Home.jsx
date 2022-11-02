@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useMovies } from "../hooks/useMovies";
 import { MovieSelectedForm } from "../components/MovieSelectedForm";
 import { ConfirmModal } from "../components/ConfirmModal";
+import { Filter } from "../components/Filter";
 
 const SelectedMovies = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
@@ -27,10 +28,9 @@ export const Home = () => {
   const { selectedMovies, selectMovie, deleteMovie } = useMovies();
 
   const [page, setPage] = useState(1);
-
-  const paginationHandler = (event, page) => {
-    setPage(page);
-  };
+  const [filterRequest, setFilterRequest] = useState([]);
+  const [link, setLink] = useState("");
+  const [listName, setListName] = useState("");
 
   const { data, loading } = useQuery(QUERY_GET_MOVIES, {
     variables: {
@@ -39,8 +39,9 @@ export const Home = () => {
     },
   });
 
-  const [link, setLink] = useState("");
-  const [listName, setListName] = useState("");
+  const paginationHandler = (event, page) => {
+    setPage(page);
+  };
 
   const onSubmit = ({ listName }) => {
     const ids = selectedMovies.map((movie) => movie.id);
@@ -56,6 +57,15 @@ export const Home = () => {
     setLink("");
   };
 
+  const onSubmitFilter = (value) => {
+    setFilterRequest({
+      year: value.year,
+      genre: value.genre,
+    });
+  };
+
+  console.log(filterRequest);
+
   return (
     <>
       <Box
@@ -65,11 +75,11 @@ export const Home = () => {
         }}
       >
         <Grid container spacing={2}>
-          {/* <Grid item xs={12}>
+          <Grid item xs={12}>
             <Paper elevation={3}>
-              <p>Filters section</p>
+              <Filter onSubmit={onSubmitFilter} />
             </Paper>
-          </Grid> */}
+          </Grid>
           {/* Movie Cards */}
           <Grid item xs={12} md={8}>
             <Paper elevation={3}>

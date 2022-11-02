@@ -8,6 +8,7 @@ class Movie {
     this.title = movie.title
     this.runtime = movie.runtime
     this.posterPath = `${BASE_URL}${movie.poster_path}`
+    this.genres = movie.genres.map(genre => genre.name)
   }
 
   releaseDate(params) {

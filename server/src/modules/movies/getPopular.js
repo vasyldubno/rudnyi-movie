@@ -17,7 +17,6 @@ class Movies {
     this.results = movies.results.map(movie => new Movie(movie))
   }
 }
-
 class Movie {
   constructor(movie) {
     this.movie = movie

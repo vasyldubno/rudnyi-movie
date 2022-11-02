@@ -15,7 +15,7 @@ type Movie {
   title: String!
   releaseDate(format: String): String!
   posterPath: String
-  genres: [Genre]
+  genres: [String]
 }
 
 type Genre {
